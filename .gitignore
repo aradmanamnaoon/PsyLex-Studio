@@ -1,0 +1,139 @@
+# PsyLex Studio — public-repository safety defaults
+# Only original starter glossary, code, icons, and safe test fixtures
+# remain trackable. Proprietary dictionaries and their exports are blocked.
+
+# Python environments, interpreters, bytecode and tool caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
+.cache/
+.ipynb_checkpoints/
+.pyre/
+
+# Generated distributions / installers / Windows binary artifacts
+/build/
+/dist/
+/output/
+/releases/
+*.exe
+*.msi
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+*.dll
+*.pyd
+*.pdb
+*.spec
+*.whl
+*.egg
+*.egg-info/
+*.pyz
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.nupkg
+
+# Credentials, environment files, certificates, tokens, backups
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.key
+*.asc
+id_rsa*
+id_ed25519*
+*credentials*.json
+*secrets*.json
+*token*.json
+*api_key*.txt
+*api_keys*.txt
+*_private*.json
+
+# Per-user settings, databases, generated translations, diagnostics
+settings.json
+settings.local.json
+first_launch_local_model_setup*.json
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.db3
+*.db3-*
+*.log
+*.log.*
+*.trace
+*.dmp
+*.dump
+*.bak
+*.backup
+*.tmp
+*.temp
+*.swp
+*.swo
+*.pid
+*.pid.lock
+/diagnostics/
+/exports/
+/user_data/
+/data/
+/logs/
+/reports/*
+!/reports/README.md
+/release_gate_console.txt
+/pytest_full.txt
+/PsyLex_Windows_Diagnostics.zip
+
+# Large downloaded model weights, caches, private research files
+/models/
+/model_cache/
+/hf_cache/
+/huggingface/
+*.gguf
+*.ggml
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+
+# Local development/editor/OS
+.vscode/
+.idea/
+.vs/
+*.code-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Never publish third-party books, or derived/private lexicon exports.
+/resources/dictionaries/
+/resources/lexicon.jsonl
+/resources/*source*.docx
+/resources/*private*.docx
+/legacy_dictionary_exports/
+
+# Common pasted support logs and potentially sensitive screenshots
+/Pasted text*.txt
+/Screenshot *.png
+/screenshots/

@@ -1,0 +1,26 @@
+# Core runtime dependencies for PsyLex Studio
+# Recommended build Python version: 3.11.x
+# Supported project range: Python 3.10 to 3.13
+# Runtime: Python 3.11 is recommended for Windows packaging.
+PySide6>=6.7,<7
+python-docx>=1.1,<2
+rapidfuzz>=3.8,<4
+rank-bm25>=0.2.2,<1
+litellm>=1.50,<3
+langgraph>=0.2,<2
+langchain-core>=0.3,<2
+langchain-community>=0.3,<2
+langchain-text-splitters>=0.3,<2
+keyring>=25,<27
+
+# Document translation and offline scanned-PDF OCR
+pymupdf>=1.25,<2
+Pillow>=10.3,<13
+rapidocr-onnxruntime>=1.4,<2
+requests>=2.32,<3
+boto3>=1.35,<2
+pytesseract>=0.3.13,<1
+beautifulsoup4>=4.12,<5
+striprtf>=0.0.28,<1
+odfpy>=1.4,<2
+EbookLib>=0.18,<1

@@ -1,0 +1,9 @@
+{
+  "product": "PsyLex Studio",
+  "version": "0.6.5",
+  "edition": "public-no-third-party-books",
+  "glossary": "Original illustrative 16-term starter glossary only",
+  "third_party_books_included": false,
+  "private_source_lexicon_included": false,
+  "notes": "Public release must be built from THIS source directory. Never upload the previous private build or privately derived lexicon."
+}

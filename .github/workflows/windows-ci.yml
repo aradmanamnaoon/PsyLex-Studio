@@ -1,0 +1,87 @@
+name: Windows compatibility and UI smoke tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    env:
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+          cache: pip
+      - name: Install project and test requirements
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -e ".[dev]"
+      - name: Python regression tests
+        run: python -m pytest -q
+      - name: Full source-backed dictionary smoke
+        run: python scripts/dictionary_smoke.py
+      - name: PySide6 GUI controls smoke
+        run: python scripts/ui_click_smoke_test.py
+      - name: PySide6 layout smoke
+        run: python scripts/ui_smoke_test.py
+      - name: Saved credential UI lifecycle (mock keyring)
+        run: python scripts/ui_credentials_smoke_test.py
+      - name: Full strict Windows release gate (3.11)
+        if: matrix.python-version == '3.11'
+        run: python scripts/release_gate.py --require-windows --require-gui --require-native-ocr
+      - name: Preserve Windows release results
+        if: always() && matrix.python-version == '3.11'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-gate-windows-py311
+          path: |
+            reports/release_gate.json
+            reports/release_ocr_smoke.json
+          retention-days: 14
+
+  packaged-exe-smoke:
+    # Resource-intensive packaging only when deliberately triggered.
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: windows-latest
+    env:
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: x64
+      - name: Install packaged runtime dependencies
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -e ".[dev]"
+      - name: Build portable Windows app
+        run: python build_installer.py --clean --skip-installer
+      - name: Test bundled dictionary, assets, and native OCR
+        shell: pwsh
+        run: |
+          & .\dist\PsyLexStudio\PsyLexStudio.exe --self-test-report .\dist\package-self-test.json
+          $status = $LASTEXITCODE
+          if (Test-Path .\dist\package-self-test.json) {
+            Get-Content .\dist\package-self-test.json
+          }
+          if ($status -ne 0) { exit $status }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-onedir-and-selftest
+          path: |
+            dist/PsyLexStudio/
+            dist/package-self-test.json
+          retention-days: 7

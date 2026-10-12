@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "psylex-studio"
+version = "0.6.5"
+description = "Local-first EN-to-Persian psychology terminology and LLM translator"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = {text = "MIT"}
+authors = [{name = "PsyLex Contributors"}]
+dependencies = [
+ "PySide6>=6.7,<7", "python-docx>=1.1,<2", "rapidfuzz>=3.8,<4",
+ "rank-bm25>=0.2.2,<1", "litellm>=1.50,<3", "langgraph>=0.2,<2",
+ "langchain-core>=0.3,<2", "langchain-community>=0.3,<2",
+ "langchain-text-splitters>=0.3,<2", "keyring>=25,<27",
+ "pymupdf>=1.25,<2", "Pillow>=10.3,<13", "rapidocr-onnxruntime>=1.4,<2", "requests>=2.32,<3", "boto3>=1.35,<2", "pytesseract>=0.3.13,<1",
+ "beautifulsoup4>=4.12,<5", "striprtf>=0.0.28,<1", "odfpy>=1.4,<2", "EbookLib>=0.18,<1"
+]
+
+[project.optional-dependencies]
+ocr_cloud = ["requests>=2.32,<3", "boto3>=1.35,<2"]
+rag = ["langchain-chroma>=0.1", "chromadb>=0.5", "langchain-huggingface>=0.1", "sentence-transformers>=3", "torch>=2.3"]
+eval = ["ragas>=0.2", "datasets>=2.20", "pytest>=8"]
+local = ["gpt4all>=2", "transformers>=4.44", "torch>=2.3"]
+dev = ["pytest>=8", "ruff>=0.6", "pyinstaller>=6.8"]
+ocr_advanced = ["paddleocr>=3.3,<4", "paddlepaddle>=3.2,<4"]
+
+[tool.setuptools.packages.find]
+include = ["psylex*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
