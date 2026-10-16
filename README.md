@@ -10,7 +10,7 @@
 
 [![Release](https://img.shields.io/badge/release-v0.6.5-245d46?style=flat-square)](https://github.com/aradmanamnaoon/PsyLex-Studio/releases/tag/v0.6.5)
 [![Windows](https://img.shields.io/badge/platform-Windows-376451?style=flat-square)](https://github.com/aradmanamnaoon/PsyLex-Studio/releases)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-377653?style=flat-square)](pyproject.toml)
+[![Python](https://img.shields.io/badge/Python-3.10--3.12-377653?style=flat-square)](pyproject.toml)
 [![License](https://img.shields.io/badge/original%20code-MIT-40604f?style=flat-square)](LICENSE)
 
 **[📖 Settings Guide](#complete-settings-guide)** · **[⬇️ Download Windows Installer](https://github.com/aradmanamnaoon/PsyLex-Studio/releases/download/v0.6.5/PsyLexStudio-Setup-v0.6.5.exe)** · **[Explore the App](#inside-the-workspace)** · **[Build from Source](#build-from-source)** · **[Release Notes](RELEASE_NOTES.md)**
@@ -77,6 +77,10 @@ PsyLex keeps **retrieved dictionary entries** distinct from **generated translat
 4. Open **Dictionary & Data** to import additional permitted reference material.
 
 The packaged installer includes Python. You do **not** need a separate Python installation. An unsigned build may display a Windows publisher warning; check the release provenance before proceeding.
+
+### Verified Python support
+
+Use **Python 3.10–3.12** for current source installs, preferably Python **3.11** for the Windows release workflow. The 2026-10-12 hosted CI matrix passed on 3.10–3.12, but the Python 3.13 job failed during dependency installation, before tests. Its exact package-resolution cause remains under investigation in [issue #1](https://github.com/aradmanamnaoon/PsyLex-Studio/issues/1). Python 3.13 is **not currently claimed as supported**; this restriction does not alter the published v0.6.5 installer. Test the install and feature behaviour on your machine before trusting results.
 
 ### Option 2 — Build from source
 
