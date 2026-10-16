@@ -931,6 +931,8 @@ No. Scan quality, model capabilities, and specialist terminology vary. Always re
 - **Security:** Do not commit API keys, local databases, private model files, or patient/research documents. See [SECURITY.md](SECURITY.md).
 - **Status:** v0.6.5 is research/productivity software, **not a clinical decision-support tool**.
 
+**First time trying PsyLex?** Please [report your first-run experience](https://github.com/aradmanamnaoon/PsyLex-Studio/issues/new?template=first-run.yml), including installation failure or confusing screens. This is voluntary; do not paste confidential psychology reports, participant text, scanned personal documents, unpublished datasets, or provider API keys.
+
 Found a reproducible bug, a terminology edge case, or an idea for improving the Persian language experience? **[Open an issue](https://github.com/aradmanamnaoon/PsyLex-Studio/issues)** with clear reproduction steps and sanitized screenshots.
 
 <div align="center">
