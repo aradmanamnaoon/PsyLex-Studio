@@ -15,6 +15,8 @@
 
 **[📖 Settings Guide](#complete-settings-guide)** · **[⬇️ Download Windows Installer](https://github.com/aradmanamnaoon/PsyLex-Studio/releases/download/v0.6.5/PsyLexStudio-Setup-v0.6.5.exe)** · **[Explore the App](#inside-the-workspace)** · **[Build from Source](#build-from-source)** · **[Release Notes](RELEASE_NOTES.md)**
 
+**[🔎 Ten-minute honest first-run test](docs/FIRST_RUN_EVALUATION.md)** — the quick path for reviewers, including a safe feedback form and clear scope.
+
 </div>
 
 ---
